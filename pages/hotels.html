@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find the best hotels and accommodation across Sri Lanka — luxury resorts, boutique stays, eco-lodges and villas.">
+  <title>Hotels & Accommodation | Explore Sri Lanka</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body data-page="hotels" class="page-offset">
+
+  <header id="navbar" class="navbar"></header>
+
+  <main>
+    <section class="page-hero">
+      <img src="https://images.unsplash.com/photo-1519566335946-e6f65f0f4fdf?w=1400&q=80" alt="Hotels" class="page-hero__bg">
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Hotels & Accommodation</h1>
+        <p class="page-hero__subtitle">Sleep in Comfort Across Sri Lanka</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" id="hotel-filters">
+          <button class="filter-pill active" data-filter="All">All</button>
+          <button class="filter-pill" data-filter="Luxury">Luxury</button>
+          <button class="filter-pill" data-filter="Boutique">Boutique</button>
+          <button class="filter-pill" data-filter="Resort">Resort</button>
+          <button class="filter-pill" data-filter="Eco Lodge">Eco Lodge</button>
+          <button class="filter-pill" data-filter="Villa">Villa</button>
+        </div>
+        <div class="grid-3" id="hotels-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer"></footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/hotels.js"></script>
+</body>
+</html>

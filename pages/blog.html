@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read travel stories, tips and guides about exploring Sri Lanka.">
+  <title>Blog | Explore Sri Lanka</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body data-page="blog" class="page-offset">
+
+  <header id="navbar" class="navbar"></header>
+
+  <main>
+    <section class="page-hero">
+      <img src="https://images.unsplash.com/photo-1578519050142-afb511e518de?w=1400&q=80" alt="Blog" class="page-hero__bg">
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Travel Stories & Tips</h1>
+        <p class="page-hero__subtitle">Expert guides and insider knowledge about Sri Lanka</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-3" id="blog-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer"></footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('blog-grid');
+      if (grid) {
+        grid.innerHTML = BLOG_POSTS.map(renderBlogCard).join('');
+        initScrollAnimations();
+      }
+    });
+  </script>
+</body>
+</html>

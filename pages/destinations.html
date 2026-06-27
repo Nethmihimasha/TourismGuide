@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Sri Lanka's top tourist destinations — beaches, mountains, wildlife, history and adventure.">
+  <title>Destinations | Explore Sri Lanka</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body data-page="destinations" class="page-offset">
+
+  <header id="navbar" class="navbar"></header>
+
+  <main>
+    <section class="page-hero">
+      <img src="https://images.unsplash.com/photo-1612862862126-865765df2ded?w=1400&q=80" alt="Destinations" class="page-hero__bg">
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Tourist Destinations</h1>
+        <p class="page-hero__subtitle">Discover 12 of Sri Lanka's most iconic places</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="search-box">
+          <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="dest-search" class="search-box__input" placeholder="Search destinations...">
+        </div>
+
+        <div class="filter-bar" id="dest-filters">
+          <button class="filter-pill active" data-filter="All">All</button>
+          <button class="filter-pill" data-filter="Beach">Beach</button>
+          <button class="filter-pill" data-filter="Mountain">Mountain</button>
+          <button class="filter-pill" data-filter="Historical">Historical</button>
+          <button class="filter-pill" data-filter="Adventure">Adventure</button>
+          <button class="filter-pill" data-filter="Wildlife">Wildlife</button>
+          <button class="filter-pill" data-filter="Religious">Religious</button>
+        </div>
+
+        <div class="grid-3" id="destinations-grid"></div>
+        <div class="empty-state" id="dest-empty" style="display:none">No destinations found matching your search.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer"></footer>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/destinations.js"></script>
+</body>
+</html>

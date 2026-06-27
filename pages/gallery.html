@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse our travel gallery — stunning photos of Sri Lanka's nature, culture, wildlife, beaches and food.">
+  <title>Gallery | Explore Sri Lanka</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body data-page="gallery" class="page-offset">
+
+  <header id="navbar" class="navbar"></header>
+
+  <main>
+    <section class="page-hero">
+      <img src="https://images.unsplash.com/photo-1544015759-237f87d55ef3?w=1400&q=80" alt="Gallery" class="page-hero__bg">
+      <div class="page-hero__overlay"></div>
+      <div class="page-hero__content">
+        <h1 class="page-hero__title">Travel Gallery</h1>
+        <p class="page-hero__subtitle">Capturing the Beauty of Sri Lanka</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" id="gallery-filters">
+          <button class="filter-pill active" data-filter="All">All</button>
+          <button class="filter-pill" data-filter="Nature">Nature</button>
+          <button class="filter-pill" data-filter="Culture">Culture</button>
+          <button class="filter-pill" data-filter="Wildlife">Wildlife</button>
+          <button class="filter-pill" data-filter="Beaches">Beaches</button>
+          <button class="filter-pill" data-filter="Mountains">Mountains</button>
+          <button class="filter-pill" data-filter="Food">Food</button>
+        </div>
+        <div class="gallery-masonry" id="gallery-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer"></footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <img src="" alt="" class="lightbox__image">
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/gallery.js"></script>
+</body>
+</html>
