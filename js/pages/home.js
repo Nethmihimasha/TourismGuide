@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const slider = document.querySelector('.hero-slider');
   if (!slider) return;
+  const scrollArrow = slider.querySelector('.home-hero__scroll');
 
   const slides = slider.querySelectorAll('.hero-slider__slide');
   const dotsContainer = slider.querySelector('.hero-slider__dots');
-  const caption = slider.querySelector('.hero-slider__caption');
   let current = 0;
   let autoplayTimer;
 
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     current = (index + slides.length) % slides.length;
     slides[current].classList.add('active');
     dots[current].classList.add('active');
-    if (caption) caption.textContent = slides[current].dataset.caption || '';
     resetAutoplay();
   }
 
@@ -41,6 +40,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   slider.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
   slider.addEventListener('mouseleave', resetAutoplay);
+
+  if (scrollArrow) {
+    const scrollTarget = document.querySelector('.stats-bar') || slider.nextElementSibling;
+
+    scrollArrow.setAttribute('role', 'button');
+    scrollArrow.setAttribute('tabindex', '0');
+    scrollArrow.setAttribute('aria-label', 'Scroll to next section');
+
+    const scrollToTarget = () => {
+      if (!scrollTarget) return;
+
+      scrollTarget.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    };
+
+    scrollArrow.addEventListener('click', scrollToTarget);
+    scrollArrow.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      scrollToTarget();
+    });
+  }
 
   resetAutoplay();
 });

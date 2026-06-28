@@ -33,28 +33,6 @@
   max-width: 64rem;
 }
 
-.home-hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-full);
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  margin-bottom: 1.5rem;
-}
-
-.home-hero__badge-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--color-accent);
-  animation: pulse 2s infinite;
-}
-
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
@@ -109,6 +87,7 @@
   left: 50%;
   transform: translateX(-50%);
   color: var(--color-white);
+  cursor: pointer;
   animation: bounce 2s infinite;
   z-index: 2;
 }
@@ -192,8 +171,8 @@
 
 .hero-slider__dots {
   position: absolute;
-  bottom: 5.5rem;
-  left: 50%;
+  bottom: 4rem;
+  left: 51%;
   transform: translateX(-50%);
   display: flex;
   gap: 0.5rem;
@@ -297,8 +276,6 @@
 @media (min-width: 1024px) {
   .stats-bar__grid { grid-template-columns: repeat(4, 1fr); }
 }
-
-.stats-bar__emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
 
 .stats-bar__value {
   font-family: var(--font-heading);
@@ -444,11 +421,6 @@
   color: var(--color-white);
 }
 
-.experience-card__icon {
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .experience-card__name {
   font-family: var(--font-heading);
   font-weight: 600;
@@ -525,8 +497,6 @@
 }
 
 .tip-card:hover { background: rgba(244, 225, 193, 0.4); }
-
-.tip-card__icon { font-size: 1.875rem; flex-shrink: 0; }
 
 .tip-card__title {
   font-family: var(--font-heading);
