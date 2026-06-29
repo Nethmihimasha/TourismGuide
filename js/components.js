@@ -223,7 +223,7 @@ function renderDestCard(d) {
       <div class="card__body" style="display: flex; flex-direction: column; flex-grow: 1;">
         <h3 class="card__title">${d.name}</h3>
         <div class="dest-card__meta">
-          <span>🕐 ${d.season}</span>
+          <span>Season: ${d.season}</span>
           <span class="dest-card__budget">${d.budget}</span>
         </div>
         <p class="card__text mb-4">${d.desc}</p>
@@ -277,7 +277,7 @@ function renderHotelCard(h) {
           <h3 class="card__title">${h.name}</h3>
           <span class="hotel-card__price">${h.price}</span>
         </div>
-        <p class="hotel-card__location">📍 ${h.location}</p>
+        <p class="hotel-card__location"> ${h.location}</p>
         <p class="card__text mb-4">${h.desc}</p>
         <div class="mb-4">${h.facilities.map(f => `<span class="tag tag--blue">${f}</span> `).join('')}</div>
         <button class="btn btn--blue btn--full btn--sm">Book Now</button>

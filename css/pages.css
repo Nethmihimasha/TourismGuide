@@ -232,9 +232,35 @@
   border-color: rgba(0, 119, 182, 0.2);
 }
 
-.transport-card__icon {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
+.transport-card__media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  margin-bottom: 0.9rem;
+  border: 2px dashed var(--color-gray-300);
+  background: linear-gradient(135deg, var(--color-gray-50), #eef7fb);
+  color: var(--color-gray-500);
+  font-family: var(--font-button);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.transport-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .transport-card__media {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .transport-card__title {
@@ -430,7 +456,7 @@
 
 .experience-card__desc {
   font-size: 0.75rem;
-  color: var(--color-gray-500);
+  color: var(--color-gray-600);
 }
 
 .experience-card:hover .experience-card__desc {
@@ -630,8 +656,6 @@
 
 .climate-card:hover { border-color: rgba(0, 119, 182, 0.4); }
 
-.climate-card__icon { font-size: 3rem; margin-bottom: 1rem; }
-
 .climate-card__months {
   font-family: var(--font-button);
   font-size: 0.75rem;
@@ -685,8 +709,6 @@
 }
 
 .wildlife-item:hover { background: rgba(244, 225, 193, 0.4); }
-
-.wildlife-item__emoji { font-size: 1.875rem; }
 
 /* ─── Destination Card Extended ─── */
 .dest-card__rating {
