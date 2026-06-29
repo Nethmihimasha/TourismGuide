@@ -211,7 +211,7 @@ function renderTags(items) {
 
 function renderDestCard(d) {
   return `
-    <article class="card dest-card fade-in">
+    <article class="card dest-card fade-in" style="display: flex; flex-direction: column;">
       <div class="card__image-wrap">
         <img src="${d.img}" alt="${d.name}" class="card__image" loading="lazy">
         <span class="card__badge" style="background:var(--color-primary)">${d.cat}</span>
@@ -220,14 +220,18 @@ function renderDestCard(d) {
           ${d.rating}
         </div>
       </div>
-      <div class="card__body">
+      <div class="card__body" style="display: flex; flex-direction: column; flex-grow: 1;">
         <h3 class="card__title">${d.name}</h3>
         <div class="dest-card__meta">
           <span>🕐 ${d.season}</span>
           <span class="dest-card__budget">${d.budget}</span>
         </div>
         <p class="card__text mb-4">${d.desc}</p>
-        <div>${d.things.map(t => `<span class="tag">${t}</span>`).join(' ')}</div>
+        <div class="mb-4">${d.things.map(t => `<span class="tag">${t}</span>`).join(' ')}</div>
+        ${d.mapUrl ? `<a href="${d.mapUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.875rem; color: var(--color-primary); font-weight: 600; text-decoration: none; margin-top: auto;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          View on Map
+        </a>` : ''}
       </div>
     </article>`;
 }
