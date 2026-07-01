@@ -28,7 +28,6 @@
           <h2 class="section__title" style="text-align:left;margin-bottom:2rem">Send Us a Message</h2>
 
           <div class="form-success" id="form-success" style="display:none">
-            <div class="form-success__icon">✅</div>
             <h3 class="form-success__title">Message Sent!</h3>
             <p class="card__text">Thank you for contacting ExploreSL. We'll get back to you within 24 hours.</p>
           </div>
@@ -57,7 +56,13 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="subject">Subject *</label>
-              <input type="text" id="subject" name="subject" class="form-input" placeholder="How can we help you?">
+              <select id="subject" name="subject" class="form-input">
+                <option value="" disabled selected>Select a subject</option>
+                <option value="Book a hotel">Book a hotel</option>
+                <option value="Book a package">Book a package</option>
+                <option value="Other">Other</option>
+              
+              </select>
               <span class="form-error" id="subject-error"></span>
             </div>
             <div class="form-group">
