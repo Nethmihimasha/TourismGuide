@@ -1,0 +1,92 @@
+VIVA PREP GUIDE — Interactive Features & Technical Notes
+
+1) Interactive Features Used (overview)
+- Navbar (mobile toggle): A responsive navigation rendered by `renderNavbar()` in `js/components.js`. Uses a toggle button (`#nav-toggle`) that shows/hides the mobile menu by toggling a CSS class, and swaps the menu/close icons. Key concepts: DOM selection, `addEventListener`, `classList.toggle`, responsive CSS (media queries).
+
+- Hero Slider: A JavaScript-driven slider (slides container with `.hero-slider__slide` and an `active` class). Controls include prev/next buttons and dots. Implementation uses DOM manipulation to change the active slide, optional `setInterval` for autoplay, and CSS transitions for smooth slide effects.
+
+- Animated Counters: Elements with `data-counter` are animated when they enter the viewport via `IntersectionObserver`. When observed, a small interval increments numbers until the target is reached. Key APIs: `IntersectionObserver`, `setInterval`, `dataset`.
+
+- Scroll-triggered Animations (fade-in): Elements with `.fade-in` are observed by `IntersectionObserver` and receive a `.visible` class when intersecting, which triggers CSS opacity/translate transitions.
+
+- Lightbox Gallery: Clicking a `.gallery-item` opens a modal/lightbox populated dynamically (image src and caption), using event delegation, adding/removing `open` class to show the lightbox, and keyboard handling (Escape to close). Key topics: event delegation, focus/keyboard handling, modal patterns.
+
+- FAQ Accordion: Each `.faq-item` toggles open/close by changing the `open` class when its question button is clicked. Only one item is open at a time (accordion behavior).
+
+- Go-to-top Button: `#go-top` is shown/hidden based on `window.scrollY` threshold (300px), toggling a `.visible` class. Clicking it calls `window.scrollTo({ top: 0, behavior: 'smooth' })` to smoothly scroll up.
+
+- Lazy Loading Images: `loading="lazy"` attributes are used for many images to defer offscreen image loading (reduces initial load). Also use optimized external image URLs where available.
+
+- Template Rendering & Link Resolution: Reusable render functions (e.g., `renderNavbar`, `renderFooter`, `renderXCard`) use template literals to generate HTML strings and insert them into the DOM. `getBasePath()` and `resolveHref()` manage relative path differences between top-level pages and pages in `/pages/`.
+
+2) Technical Knowledge / Concepts to Explain
+- Core DOM APIs: `document.querySelector`, `querySelectorAll`, `getElementById`, `innerHTML`, `classList`, `dataset`, `addEventListener`.
+- Event handling: event listeners, event delegation (attach one listener higher up), `preventDefault()` when needed, and managing `this` or closures.
+- IntersectionObserver: benefits (performant, avoids continuous scroll listeners), thresholds, and use cases (lazy loading, animations, analytics triggers).
+- CSS fundamentals: variables (custom properties), responsive design (media queries), Flexbox and CSS Grid for layout, transitions and transforms (use transform/opacity for GPU-accelerated animation), focus states for accessibility.
+- Accessibility (A11y): using `aria-label` on icon buttons (`#nav-toggle`, `#go-top`), keyboard shortcuts (Escape to close modal), visible focus outlines, and using semantic HTML (buttons, headings, lists).
+- Performance: image optimization, `loading="lazy"`, minimizing layout thrash (avoid reading/writing layout in same frame), passive event listeners for scroll, bundling/minification suggestions.
+- Progressive Enhancement: keep markup usable without JS where possible; enhance with JS for improved UX.
+- Modular JS patterns: small reusable functions (render, init), avoid globals, clean initialization in `DOMContentLoaded`.
+- Security notes: `target="_blank"` links should include `rel="noopener noreferrer"` (used in map links), avoid inserting untrusted HTML.
+
+3) Typical Viva Questions & Model Answers (short)
+- Q: How do you trigger animations only when elements enter the viewport?
+  A: Use `IntersectionObserver` to observe targets and add a class when `entry.isIntersecting` is true. This is more efficient than listening to `scroll` events.
+
+- Q: How does the hero slider work and how would you pause autoplay on interaction?
+  A: Slides are switched by toggling an `active` class. Autoplay uses `setInterval`; pause by clearing the interval on `mouseenter` and restart on `mouseleave`.
+
+- Q: How are links resolved between root pages and pages inside `/pages/`?
+  A: `getBasePath()` detects current path and `resolveHref()` prepends `../` when needed so links work from subpages.
+
+- Q: How to ensure the mobile nav is accessible?
+  A: Use a `button` element with `aria-label`, toggle `aria-expanded` accordingly, ensure focus remains logical when menu opens and closes.
+
+- Q: How does the go-top button perform smooth scroll?
+  A: It calls `window.scrollTo({ top: 0, behavior: 'smooth' })`; modern browsers handle the animation. Fallback: animate with requestAnimationFrame if needed.
+
+- Q: What optimizations would you add for production?
+  A: Compress images, serve modern formats (WebP/AVIF), inline critical CSS, defer non-critical JS, use HTTP caching, and consider a lightweight build/bundle pipeline.
+
+4) Live Demo / Walkthrough Steps (what to show during viva)
+- Start a local server or open `index.html` in browser (prefer server to avoid relative path issues): `python -m http.server 8000` in project root.
+- Show responsive navbar: resize to mobile width and click the toggle; show `aria` attributes and icon swap.
+- Demonstrate hero slider controls and autoplay (if implemented), and explain the code that swaps the active slide.
+- Scroll down to trigger counters and fade-in animations; point to where `IntersectionObserver` is used (`initAnimatedCounters()` and `initScrollAnimations()`).
+- Click a gallery image to open the lightbox; press Escape to close.
+- Scroll to reveal the `#go-top` button and click it to show smooth scrolling.
+- Inspect network panel to show lazy-loaded images and discuss performance.
+
+5) Common Follow-ups / Improvements (short list)
+- Add keyboard navigation for the slider (left/right arrows, focus management).
+- Trap focus inside the lightbox modal when open; return focus to triggering element on close.
+- Add aria-live region for dynamic announcements if needed (e.g., slide changed).
+- Debounce expensive handlers, and add tests for critical UI functions.
+- Use a JS bundler (Vite, Rollup) for module support and tree-shaking.
+
+6) How to Run Locally (quick)
+- Using Python built-in server (from `d:/Tour Guid Website`):
+  - Open PowerShell and run:
+
+    python -m http.server 8000
+
+  - Visit `http://localhost:8000/` in a browser.
+
+- Alternative: use the Live Server extension in VS Code.
+
+7) Files Modified for "Go to top" feature
+- `index.html` — added `<button id="go-top">` markup.
+- `css/components.css` — added `.go-top` styling.
+- `js/components.js` — added `initGoTop()` to handle show/hide and click.
+- `js/main.js` — called `initGoTop()` during initialization.
+
+8) Quick Checklist for Viva (one-line prompts)
+- Explain how `IntersectionObserver` works and why it's used.
+- Show DOM code that renders the navbar/footer and explain `resolveHref()`.
+- Describe accessibility decisions (buttons vs links, `aria-label`).
+- Demonstrate the go-top, counters, lightbox, and responsive navbar behaviors.
+- Discuss performance improvements and next steps.
+
+---
+If you want this as an HTML page instead (styled like the site) or included on each page in `/pages/`, I can convert or inject it across files. Also let me know if you'd like a shorter one-page cheat-sheet for quick memorization.
