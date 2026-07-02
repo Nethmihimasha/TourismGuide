@@ -5,4 +5,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFooter();
   initAnimatedCounters();
   initScrollAnimations();
+  initGoTop();
 });

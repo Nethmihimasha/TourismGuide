@@ -356,3 +356,22 @@ function initLightbox() {
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 }
+
+function initGoTop() {
+  const btn = document.getElementById('go-top');
+  if (!btn) return;
+  const showAt = 300;
+
+  const onScroll = () => {
+    if (window.scrollY > showAt) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  // ensure correct initial state
+  onScroll();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
